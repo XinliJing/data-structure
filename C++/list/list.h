@@ -10,6 +10,8 @@ protected:
 	void init();	//列表初始化
 	int clear();
 	void copyNodes( ListNode<T>* p, int n);	//复制列表中自位置p开始的n项 
+	void selectionSort(ListNode<T>* p, int n);
+	void insertionSort(ListNode<T>* p, int n); 
 public:
 	List() { init(); }
 	List(List<T> const& L);
@@ -27,6 +29,8 @@ public:
 	ListNode<T>* find(T const& e, int n, ListNode<T>* p) const;	//无序列表区间查找
 	ListNode<T>* find(T const& e) const{ return find(e, _size, trailer); } 
 	ListNode<T>* search(T const& e, int n, ListNode<T>* p) const;
+	ListNode<T>* selectMax(ListNode<T>* p, int n);
+	ListNode<T>* selectMax(){ return selectMax(header->succ, _size); }
 	//write API
 	ListNode<T>* insertBefore(ListNode<T>* p, T const& e)
 	{ _size++; return p->insertAsPred(e); }

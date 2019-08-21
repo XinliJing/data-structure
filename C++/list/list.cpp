@@ -94,3 +94,28 @@ ListNode<T>* List<T>::search(T const& e, int n, ListNode<T>* p){
 	}
 	return p;
 } 
+template<class T>
+void List<T>::selectionSort(ListNode<T>* p, int n){
+	ListNode<T>* head = p->pred;	ListNode<T>* tail = p;
+	for(int i = 0; i < n; i++)	tail = tail->succ;
+	while(1 < n){
+		insertBefore(tail, remove(selectMax(head->succ, n)));
+		tail = tail->pred;	n--;
+	}
+}
+template<class T>
+void List<T>*::selectMax(ListNode<T>* p, int n){
+	ListNode<T>* max = p;
+	for(ListNode<T>* cur = p; 1 < n; n--){
+		if( ((cur=cur->succ)->data) >= max->data)
+			max = cur;
+	return max;
+	}
+}
+template<class T>
+void List<T>::insertionSort(ListNode<T>* p, int n){
+	for(int r = 0; r < n; r++){
+		insertAfter(search(p->data, r, p), p->data);
+		p = p->succ; remove(p->pred);
+	}
+}
